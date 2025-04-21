@@ -22,7 +22,7 @@ namespace BoardsForReview
             // timer para cargar las piezas por probar
             InitializeComponent();
             timer1 = new Timer();
-           // timer1.Interval = 12000; //
+           // timer1.Interval = 10000; //
             timer1.Interval = 5 * 60 * 1000; // 5 minutos
             timer1.Tick += timer1_Tick;
             timer1.Start();
@@ -37,11 +37,19 @@ namespace BoardsForReview
 
             // Abrir si esta minimizado cada 5 min
 
-            checkMinimizedTimer = new Timer();
-            checkMinimizedTimer.Interval = 5 * 60 * 1000; // 5 minutos en milisegundos
-           // checkMinimizedTimer.Interval = 10000;
-            checkMinimizedTimer.Tick += CheckIfMinimized;
-            checkMinimizedTimer.Start();
+
+            if (cargarDatos() > 0) {
+
+                checkMinimizedTimer = new Timer();
+                checkMinimizedTimer.Interval = 5 * 60 * 1000; // 5 minutos en milisegundos
+               // checkMinimizedTimer.Interval = 10000; // 10 segundos
+                                                              // checkMinimizedTimer.Interval = 10000;
+                checkMinimizedTimer.Tick += CheckIfMinimized;
+                checkMinimizedTimer.Start();
+
+            }
+
+
 
             // llevar siempre al frente
             this.TopMost = true;    // Poner al frente
@@ -88,7 +96,7 @@ namespace BoardsForReview
 
         }
 
-        public void cargarDatos()
+        public int cargarDatos()
         {
 
             // Limpiar cualquier dato previo en el DataGridView
@@ -138,6 +146,8 @@ namespace BoardsForReview
 
             // Hacer que se apliquen los estilos personalizados
             dataGridView1.EnableHeadersVisualStyles = false;
+
+            return totalFilas;
 
 
         }
