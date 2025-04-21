@@ -142,4 +142,7 @@ docker-compose*
 
 
 App.config
+BoardsForReview.csproj
+BoardsForReview.csproj.user
+BoardsForReview_TemporaryKey.pfx
 /BoardsForReview
